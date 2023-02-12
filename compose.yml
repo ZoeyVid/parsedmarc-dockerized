@@ -14,7 +14,7 @@ services:
         condition: service_healthy
   elasticsearch:
     container_name: parsedmarc-es
-    image: elasticsearch:7.17.9
+    image: elasticsearch:8.6.1
     restart: always
     environment:
       - "TZ=Europe/Berlin"
