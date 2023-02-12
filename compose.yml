@@ -1,0 +1,70 @@
+version: "3"
+services:
+  parsedmarc:
+    container_name: parsedmarc
+    image: zoeyvid/parsedmarc-dockerized
+    restart: always
+    environment:
+      - "TZ=Europe/Berlin"
+    volumes:
+      - "/opt/parsedmarc/conf:/etc/parsedmarc"
+      - "/opt/parsedmarc/geoipupdate:/usr/share/GeoIP"
+    depends_on:
+      - elasticsearch
+      - kibana
+  elasticsearch:
+    container_name: parsedmarc-es
+    image: elasticsearch:8.6.2
+    restart: always
+    environment:
+      - "TZ=Europe/Berlin"
+      - "ES_JAVA_OPTS=-Xms128m -Xmx128m -Des.enforce.bootstrap.checks=true"
+      - "xpack.license.self_generated.type=basic"
+      - "xpack.security.enabled=false"
+      - "xpack.watcher.enabled=false"
+      - "xpack.graph.enabled=false"
+      - "xpack.ml.enabled=false"
+      - "bootstrap.memory_lock=true"
+      - "cluster.name=parsedmarc"
+      - "discovery.type=single-node"
+      - "thread_pool.write.queue_size=1000"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - "/opt/parsedmarc/elasticsearch:/usr/share/elasticsearch/data"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail --location localhost:9200/_cluster/health || exit 1"]
+  kibana:
+    container_name: parsedmarc-kibana
+    image: kibana:8.6.2
+    restart: always
+    environment:
+      - "TZ=Europe/Berlin"
+      - "elasticsearch.hosts=http://elasticsearch:9200"
+      - "server.publicBaseUrl=https://dmarc.example.com"
+      - "telemetry.enabled=false"
+      - "telemetry.optIn=false"
+    ports:
+      - "127.0.0.1:5601:5601"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail --location localhost:5601 || exit 1"]
+    depends_on:
+      - elasticsearch
+  geoipupdate:
+    container_name: parsedmarc-geoipupdate
+    image: maxmindinc/geoipupdate
+    restart: always
+    environment:
+      - "TZ=Europe/Berlin"
+      - "GEOIPUPDATE_EDITION_IDS=GeoLite2-Country"
+      - "GEOIPUPDATE_PRESERVE_FILE_TIMES=1"
+      - "GEOIPUPDATE_ACCOUNT_ID=HERE_GOES_YOUR_ACCOUNT_ID"
+      - "GEOIPUPDATE_LICENSE_KEY=HERE_GOES_YOUR_LICENSE_KEY"
+      - "GEOIPUPDATE_FREQUENCY=24"
+    volumes:
+      - "/opt/parsedmarc/geoipupdate:/usr/share/GeoIP"
