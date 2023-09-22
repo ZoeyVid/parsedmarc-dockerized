@@ -14,7 +14,7 @@ services:
       - kibana
   elasticsearch:
     container_name: parsedmarc-es
-    image: elasticsearch:8.10.1
+    image: elasticsearch:8.10.2
     restart: always
     environment:
       - "TZ=Europe/Berlin"
