@@ -1,4 +1,4 @@
-FROM python:3.11.5-alpine3.18
+FROM python:3.11.7-alpine3.19
 
 RUN apk add --no-cache ca-certificates tzdata tini curl jq build-base libffi-dev && \
     pip install --no-cache-dir parsedmarc && \
