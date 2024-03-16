@@ -1,4 +1,3 @@
-version: "3"
 services:
   parsedmarc:
     container_name: parsedmarc
