@@ -1,6 +1,7 @@
 FROM python:3.11.8-alpine3.19
 
-RUN apk add --no-cache ca-certificates tzdata tini curl jq build-base libffi-dev && \
+RUN apk upgrade --no-cache -a && \
+    apk add --no-cache ca-certificates tzdata tini curl jq build-base libffi-dev && \
     pip install --no-cache-dir parsedmarc && \
     apk del --no-cache build-base libffi-dev && \
     mkdir -vp /etc/parsedmarc && \
