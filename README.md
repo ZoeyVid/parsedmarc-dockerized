@@ -8,9 +8,6 @@ nano compose.yaml
 ```
 
 2. now adjust the value `GEOIPUPDATE_ACCOUNT_ID` and `GEOIPUPDATE_LICENSE_KEY` from your [MaxMind account](https://maxmind.com)
-```
-nano data/conf/parsedmarc/config.ini
-```
 
 3. Now depoly the stack
 ```
