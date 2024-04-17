@@ -1,4 +1,4 @@
-FROM python:3.11.8-alpine3.19
+FROM python:3.12.3-alpine3.19
 
 RUN apk upgrade --no-cache -a && \
     apk add --no-cache ca-certificates tzdata tini curl jq build-base libffi-dev && \
