@@ -1,5 +1,7 @@
 # parsedmarc-dockerized
 
+This docker image contains https://github.com/domainaware/parsedmarc, which should be used with the compose file, which also contains elasticsearch, kibana and maxmindinc/geoipupdate.
+
 ## How to use:
 1. Download the compose.yaml and edit it:
 ```console
