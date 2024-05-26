@@ -9,7 +9,7 @@ wget https://raw.githubusercontent.com/ZoeyVid/parsedmarc-dockerized/develop/com
 nano compose.yaml
 ```
 2. now adjust the value `GEOIPUPDATE_ACCOUNT_ID` and `GEOIPUPDATE_LICENSE_KEY` from your [MaxMind account](https://maxmind.com) and edit `server.publicBaseUrl`
-3. Now depoly the stack
+3. Now deploy the stack
 ```console
 docker compose up -d
 ```
