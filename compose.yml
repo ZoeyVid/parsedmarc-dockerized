@@ -27,6 +27,7 @@ services:
       - "cluster.name=parsedmarc"
       - "discovery.type=single-node"
       - "thread_pool.write.queue_size=1000"
+      - "ingest.geoip.downloader.enabled=false"
     ulimits:
       memlock:
         soft: -1
