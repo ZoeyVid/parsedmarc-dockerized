@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:labs
-FROM python:3.12.6-alpine3.20
+FROM python:3.12.7-alpine3.20
 COPY --from=zoeyvid/curl-quic:416 /usr/local/bin/curl /usr/local/bin/curl
 
 RUN apk upgrade --no-cache -a && \
