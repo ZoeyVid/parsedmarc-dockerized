@@ -4,7 +4,7 @@ COPY --from=zoeyvid/curl-quic:416 /usr/local/bin/curl /usr/local/bin/curl
 
 RUN apk upgrade --no-cache -a && \
     apk add --no-cache ca-certificates tzdata tini jq build-base libffi-dev && \
-    pip install --no-cache-dir parsedmarc && \
+    pip install --no-cache-dir parsedmarc==8.15.1 && \
     apk del --no-cache build-base libffi-dev && \
     mkdir -vp /etc/parsedmarc && \
     chown -R nobody:nobody /tmp /etc/parsedmarc
