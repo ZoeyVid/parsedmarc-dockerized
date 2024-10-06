@@ -5,10 +5,12 @@ on:
       - develop
     paths:
       - Dockerfile
+      - requirements.txt
       - .github/workflows/docker.yml
   pull_request:
     paths:
       - Dockerfile
+      - requirements.txt
       - .github/workflows/docker.yml
   workflow_dispatch:
 jobs:
