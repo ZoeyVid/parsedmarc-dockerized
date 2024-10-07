@@ -5,7 +5,7 @@ This docker image contains https://github.com/domainaware/parsedmarc, which shou
 ## How to use:
 1. Download the compose.yaml and edit it:
 ```console
-wget https://raw.githubusercontent.com/ZoeyVid/parsedmarc-dockerized/develop/compose.yml
+wget https://raw.githubusercontent.com/ZoeyVid/parsedmarc-dockerized/develop/compose.yaml
 nano compose.yaml
 ```
 2. now adjust the value `GEOIPUPDATE_ACCOUNT_ID` and `GEOIPUPDATE_LICENSE_KEY` from your [MaxMind account](https://maxmind.com) and edit `server.publicBaseUrl`
