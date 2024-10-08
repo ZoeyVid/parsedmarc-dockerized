@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:labs
-FROM python:3.12.7-alpine3.20
+FROM python:3.13.0-alpine3.20
 COPY --from=zoeyvid/curl-quic:419 /usr/local/bin/curl /usr/local/bin/curl
 COPY requirements.txt /tmp/requirements.txt
 
