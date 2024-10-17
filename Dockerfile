@@ -8,7 +8,7 @@ RUN apk upgrade --no-cache -a && \
 
 FROM python:3.13.0-alpine3.20
 ENV PYTHONUNBUFFERED=1
-COPY --from=zoeyvid/curl-quic:419 /usr/local/bin/curl /usr/local/bin/curl
+COPY --from=zoeyvid/curl-quic:420 /usr/local/bin/curl /usr/local/bin/curl
 COPY --from=pip /usr/local /usr/local
 RUN apk upgrade --no-cache -a && \
     apk add --no-cache ca-certificates tzdata tini jq && \
