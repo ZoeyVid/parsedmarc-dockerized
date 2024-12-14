@@ -8,10 +8,9 @@ RUN apk upgrade --no-cache -a && \
 
 FROM python:3.13.1-alpine3.21
 ENV PYTHONUNBUFFERED=1
-COPY --from=zoeyvid/curl-quic:431 /usr/local/bin/curl /usr/local/bin/curl
 COPY --from=pip /usr/local /usr/local
 RUN apk upgrade --no-cache -a && \
-    apk add --no-cache ca-certificates tzdata tini jq && \
+    apk add --no-cache ca-certificates tzdata tini curl jq && \
     mkdir -vp /etc/parsedmarc && \
     chown -R nobody:nobody /tmp /etc/parsedmarc
 COPY start.sh /usr/local/bin/start.sh
