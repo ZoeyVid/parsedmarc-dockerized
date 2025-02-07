@@ -1,12 +1,12 @@
 # syntax=docker/dockerfile:labs
-FROM python:3.13.1-alpine3.21 AS pip
+FROM python:3.13.2-alpine3.21 AS pip
 ENV PYTHONUNBUFFERED=1
 COPY requirements.txt /tmp/requirements.txt
 RUN apk upgrade --no-cache -a && \
     apk add --no-cache ca-certificates build-base libffi-dev && \
     pip install --no-cache-dir -r /tmp/requirements.txt
 
-FROM python:3.13.1-alpine3.21
+FROM python:3.13.2-alpine3.21
 ENV PYTHONUNBUFFERED=1
 COPY --from=pip /usr/local /usr/local
 RUN apk upgrade --no-cache -a && \
