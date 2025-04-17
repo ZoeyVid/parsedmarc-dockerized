@@ -17,7 +17,7 @@ services:
     restart: always
     environment:
       - "TZ=Europe/Berlin"
-      - "ES_JAVA_OPTS=-Xms128m -Xmx128m -Des.enforce.bootstrap.checks=true"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m -Des.enforce.bootstrap.checks=true -XX:+UseG1GC"
       - "xpack.license.self_generated.type=basic"
       - "xpack.security.enabled=false"
       - "xpack.watcher.enabled=false"
