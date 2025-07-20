@@ -58,7 +58,7 @@ services:
       - elasticsearch
   geoipupdate:
     container_name: parsedmarc-geoipupdate
-    image: maxmindinc/geoipupdate
+    image: ghcr.io/maxmind/geoipupdate
     restart: always
     environment:
       - "TZ=Europe/Berlin"
