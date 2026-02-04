@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:labs
-FROM python:3.14.2-alpine3.23 AS pip
+FROM python:3.14.3-alpine3.23 AS pip
 ENV PYTHONUNBUFFERED=1
 COPY requirements.txt /tmp/requirements.txt
 RUN apk upgrade --no-cache -a && \
@@ -7,7 +7,7 @@ RUN apk upgrade --no-cache -a && \
     python3 -m venv /usr/local && \
     pip install --no-cache-dir -r /tmp/requirements.txt
 
-FROM python:3.14.2-alpine3.23
+FROM python:3.14.3-alpine3.23
 ENV PYTHONUNBUFFERED=1
 COPY --from=pip /usr/local /usr/local
 RUN apk upgrade --no-cache -a && \
