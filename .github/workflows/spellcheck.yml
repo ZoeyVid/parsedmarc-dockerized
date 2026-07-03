@@ -15,3 +15,4 @@ jobs:
         with:
           check_filenames: true
           check_hidden: true
+          ignore_words_list: optin
