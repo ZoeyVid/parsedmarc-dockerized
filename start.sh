@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
-curl -sL https://raw.githubusercontent.com/domainaware/parsedmarc/master/kibana/export.ndjson -o /tmp/export.ndjson
+curl -sSfL https://raw.githubusercontent.com/domainaware/parsedmarc/master/dashboards/opensearch/opensearch_dashboards.ndjson -o /tmp/export.ndjson
 while ! curl -sf http://kibana:5601 > /dev/null 2>&1; do
     sleep 5
 done
